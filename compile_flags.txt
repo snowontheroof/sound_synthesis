@@ -1,0 +1,4 @@
+-I
+/home/jvarila/.local/lib/portaudio/include
+-I
+.
