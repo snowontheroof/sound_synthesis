@@ -1,5 +1,5 @@
-#include "../inc/samples.hpp"
-#include "minisynth.hpp"
+#include <iostream>
+#include "samples.hpp"
 
 uint16_t	bpm					= 60;			// bpm is global out of convenience
 double		seconds_per_beat	= 60.0 / bpm;

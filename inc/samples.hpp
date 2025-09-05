@@ -2,7 +2,6 @@
 
 #include <cmath>
 #include <vector>
-#include <iostream>
 #include <cinttypes>
 #include "portaudio.h"
 
