@@ -21,7 +21,7 @@ generate_sample(Notes note, double master_volume, enum Type type)
 }
 
 std::vector<float>
-generate_sine_sample( uint16_t freq, double amplitude, double beats )
+generate_sine_sample( uint16_t freq, double amplitude, double beats, double seconds_per_beat)
 {
 	std::vector<float>	buffer{};
 	double const		sample_duration	= beats * seconds_per_beat;
@@ -37,7 +37,7 @@ generate_sine_sample( uint16_t freq, double amplitude, double beats )
 }
 
 std::vector<float>
-generate_saw_sample( uint16_t freq, double amplitude, double beats )
+generate_saw_sample( uint16_t freq, double amplitude, double beats, double seconds_per_beat )
 {
 	std::vector<float>	buffer{};
 	double const		sample_duration		= beats * seconds_per_beat;
@@ -57,7 +57,7 @@ generate_saw_sample( uint16_t freq, double amplitude, double beats )
 }
 
 std::vector<float>
-generate_square_sample( uint16_t freq, double amplitude, double beats )
+generate_square_sample( uint16_t freq, double amplitude, double beats, double seconds_per_beat )
 {
 	std::vector<float>	buffer{};
 	double const		sample_duration	= beats * seconds_per_beat;
@@ -78,7 +78,7 @@ generate_square_sample( uint16_t freq, double amplitude, double beats )
 }
 
 std::vector<float>
-generate_triangle_sample( uint16_t freq, double amplitude, double beats )
+generate_triangle_sample( uint16_t freq, double amplitude, double beats, double seconds_per_beat )
 {
 	std::vector<float>	buffer{};
 	double const			sample_duration		= beats * seconds_per_beat;
