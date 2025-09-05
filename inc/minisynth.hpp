@@ -21,6 +21,7 @@ struct Notes
 struct Track
 {
 	Type				instrument;
+	unsigned int		volume;
 	std::vector<Notes>	notes;
 	double				track_dur;
 };

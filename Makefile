@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jvarila <jvarila@student.hive.fi>          +#+  +:+       +#+         #
+#    By: sojala <sojala@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/05 11:54:28 by jvarila           #+#    #+#              #
-#    Updated: 2025/09/05 12:14:19 by jvarila          ###   ########.fr        #
+#    Updated: 2025/09/05 15:44:08 by sojala           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= minisynth
 
 CXX			:= c++
-CXX_FLAGS	:= -Wall -Wextra -Werror -std=c++20
+CXX_FLAGS	:= -std=c++20
 DEBUG_FLAGS	:= -g
 # ---------------------------------------------------------------------------- #
 INC_DIR		:= ./inc
@@ -24,6 +24,7 @@ SRC_DIR	:=	./src
 OBJ_DIR	:=	./obj
 # ---------------------------------------------------------------------------- #
 SRC :=	$(SRC_DIR)/samples.cpp	\
+		$(SRC_DIR)/parsing.cpp	\
 		$(SRC_DIR)/main.cpp
 # ---------------------------------------------------------------------------- #
 OBJ :=	$(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC))

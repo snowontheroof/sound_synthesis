@@ -1,5 +1,6 @@
 #include <iostream>
-#include "samples.hpp"
+#include "../inc/samples.hpp"
+#include "../inc/minisynth.hpp"
 
 uint16_t	bpm					= 60;			// bpm is global out of convenience
 double		seconds_per_beat	= 60.0 / bpm;
@@ -115,6 +116,7 @@ int	main( int argc, char **argv )
 	if ( err != paNoError )
 		return report_error_and_return_one( err );
 
+	delete[] parsedData.tracks;
 	return 0;
 }
 
