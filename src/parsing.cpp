@@ -67,7 +67,6 @@ Data	parseFile(std::string content)
 	Data	test;
 	size_t	j = 0;
 	size_t	k = 0;
-	size_t	l = 0;
 
 	size_t	i = content.find('t');
 	while (content[i])
@@ -80,7 +79,6 @@ Data	parseFile(std::string content)
 				j++;
 			std::string	tmp = content.substr(k, (j - k));
 			test.tempo = std::stoi(tmp);
-			// std::cout << "tempo is " << test.tempo << std::endl;
 		}
 		i++;
 	}
@@ -102,7 +100,6 @@ Data	parseFile(std::string content)
 		}
 		i++;
 	}
-	// std::cout << "track amt is " << test.track_amt << std::endl;
 	test.tracks = new Track[test.track_amt];
 	j = i + 7;
 	for (size_t l = 0; l < test.track_amt && content[j]; l++)
@@ -113,7 +110,6 @@ Data	parseFile(std::string content)
 		std::string	tmp = content.substr(k, (j - k));
 		test.tracks[l].instrument = find_type(tmp);
 		test.tracks[l].track_dur = 0;
-		// std::cout << test.tracks[l].instrument << std::endl;
 		j++;
 	}
 	while (content[j])
@@ -167,14 +163,6 @@ Data	parseFile(std::string content)
 			j++;
 		j++;
 	}
-	// for (size_t m = 0; m < test.track_amt; m++)
-	// {
-	// 	std::cout << "Track no " << m << ": instrument: " << test.tracks[m].instrument
-	// 		<< ", dur: " << test.tracks[m].track_dur << ", notes: \n";
-	// 	for (const auto& t : test.tracks[m].notes)
-	// 		std::cout << "duration: " << t.duration << ", freq: " << t.frequency
-	// 			<< ", pitch: " << t.pitch << std::endl;
-	// }
 	return test;
 }
 
@@ -182,23 +170,10 @@ Data	parser(std::string input)
 {
 	std::string		oneLine;
 	std::string		fileContent;
-	Data			parsedData;
 
 	std::ifstream	ReadFile(input);
 	while (std::getline(ReadFile, oneLine))
 		fileContent = fileContent + oneLine + '\n';
 	ReadFile.close();
 	return parseFile(fileContent);
-	//rest of the program
-	// delete[] parsedData.tracks;
 }
-//
-// int	main(int argc, char **argv)
-// {
-// 	if (argc != 2)
-// 		std::cout << "Usage: ./minisynth <file>\n";
-// 	else
-// 		minisynth(static_cast<std::string>(argv[1]));
-
-// 	return 0;
-// }

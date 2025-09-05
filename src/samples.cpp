@@ -1,7 +1,24 @@
-#include "../inc/samples.hpp"
-#include "../inc/minisynth.hpp"
+#include "minisynth.hpp"
 
 extern double	seconds_per_beat;
+
+std::vector<float>
+generate_sample(Notes note, double master_volume, enum Type type)
+{
+	switch (type)
+	{
+		case SINE:
+			return generate_sine_sample(note.frequency, master_volume, note.duration);
+		case SAW:
+			return generate_saw_sample(note.frequency, master_volume, note.duration);
+		case SQUARE:
+			return generate_square_sample(note.frequency, master_volume, note.duration);
+		case TRIANGLE:
+			return generate_triangle_sample(note.frequency, master_volume, note.duration);
+		default:
+			return generate_sine_sample(note.frequency, master_volume, note.duration);
+	}
+}
 
 std::vector<float>
 generate_sine_sample( uint16_t freq, double amplitude, double beats )
