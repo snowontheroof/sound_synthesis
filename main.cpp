@@ -116,9 +116,12 @@ void	parseFile(std::string content)
 		// std::cout << test.tracks[l].instrument << std::endl;
 		j++;
 	}
-	j++;
 	while (content[j])
 	{
+		while (content[j] && !(std::isdigit(content[j]) && content[j - 1] == '\n'))
+			j++;
+		if (!content[j])
+			break;
 		size_t a = j;
 		while (content[j] != ':')
 			j++;
@@ -166,11 +169,11 @@ void	parseFile(std::string content)
 	}
 	// for (size_t m = 0; m < test.track_amt; m++)
 	// {
-		// std::cout << "Track no " << m << ": instrument: " << test.tracks[m].instrument
-			// << ", dur: " << test.tracks[m].track_dur << ", notes: \n";
-		// for (const auto& t : test.tracks[m].notes)
-			// std::cout << "duration: " << t.duration << ", freq: " << t.frequency
-				// << ", pitch: " << t.pitch << std::endl;
+	// 	std::cout << "Track no " << m << ": instrument: " << test.tracks[m].instrument
+	// 		<< ", dur: " << test.tracks[m].track_dur << ", notes: \n";
+	// 	for (const auto& t : test.tracks[m].notes)
+	// 		std::cout << "duration: " << t.duration << ", freq: " << t.frequency
+	// 			<< ", pitch: " << t.pitch << std::endl;
 	// }
 	delete[] test.tracks;
 }
