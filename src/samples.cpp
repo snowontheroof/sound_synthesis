@@ -2,7 +2,7 @@
 #include <cmath>
 #include <vector>
 #include <iostream>
-#include "portaudio.h"
+// #include "portaudio.h"
 
 constexpr uint16_t	SAMPLE_RATE			= 40;
 constexpr double	RADIANS_PER_SAMPLE	= 2 * M_PI / SAMPLE_RATE; // Helper for sine sampling
