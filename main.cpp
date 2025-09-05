@@ -27,8 +27,8 @@ std::map<std::string, double>	make_freq()
 	while (std::getline(file, buffer))
 	{
 		size_t	pos = buffer.find('=');
-		std::string pitch = buffer.substr(0, pos);
-		double value = std::stod(buffer.substr(pos + 1));
+		std::string	pitch = buffer.substr(0, pos);
+		double	value = std::stod(buffer.substr(pos + 1));
 		freq.insert({pitch, value});
 	}
 	return freq;
@@ -36,7 +36,7 @@ std::map<std::string, double>	make_freq()
 
 double	find_freq(std::string note, std::map<std::string, double> freq)
 {
-	std::map<std::string, double>::const_iterator it = freq.find(note);
+	std::map<std::string, double>::const_iterator	it = freq.find(note);
 	if (it != freq.end())
 	{
 		return it->second;
@@ -62,7 +62,7 @@ std::string	fill_note(std::string notestr, std::vector<Notes> note, size_t idx)
 	return notestr;
 }
 
-void	parseFile(std::string content)
+Data	parseFile(std::string content)
 {
 	Data	test;
 	size_t	j = 0;
@@ -78,7 +78,7 @@ void	parseFile(std::string content)
 			k = j;
 			while (std::isdigit(content[j]))
 				j++;
-			std::string tmp = content.substr(k, (j - k));
+			std::string	tmp = content.substr(k, (j - k));
 			test.tempo = std::stoi(tmp);
 			// std::cout << "tempo is " << test.tempo << std::endl;
 		}
@@ -122,17 +122,17 @@ void	parseFile(std::string content)
 			j++;
 		if (!content[j])
 			break;
-		size_t a = j;
+		size_t	o = j;
 		while (content[j] != ':')
 			j++;
-		size_t	track_idx = std::stoi(content.substr(a, (j - a))) - 1;
+		size_t	track_idx = std::stoi(content.substr(o, (j - o))) - 1;
 		j += 2;
 		k = j;
 		while (content[j] != '\n')
 			j++;
 		std::string	string = content.substr(k, (j - k));
-		std::istringstream iss(string);
-		std::string token;
+		std::istringstream	iss(string);
+		std::string	token;
 		std::map<std::string, double>	freq = make_freq();
 
 		int	idx = 0;
@@ -145,14 +145,14 @@ void	parseFile(std::string content)
 			double	duration;
 			if (pos != std::string::npos)
 			{
-				std::string note = fill_note(token.substr(0, pos), test.tracks[track_idx].notes, idx);
+				std::string	note = fill_note(token.substr(0, pos), test.tracks[track_idx].notes, idx);
 				frequency = find_freq(note, freq);
 				duration = std::stod(token.substr(pos + 1));
 				test.tracks[track_idx].notes.push_back({note, duration, frequency});
 			}
 			else
 			{
-				std::string note = fill_note(token, test.tracks[track_idx].notes, idx);
+				std::string	note = fill_note(token, test.tracks[track_idx].notes, idx);
 				frequency = find_freq(note, freq);
 				if (idx > 0)
 					duration = test.tracks[track_idx].notes[idx - 1].duration;
@@ -175,19 +175,22 @@ void	parseFile(std::string content)
 	// 		std::cout << "duration: " << t.duration << ", freq: " << t.frequency
 	// 			<< ", pitch: " << t.pitch << std::endl;
 	// }
-	delete[] test.tracks;
+	return test;
 }
 
 void	minisynth(std::string input)
 {
 	std::string		oneLine;
 	std::string		fileContent;
+	Data			parsedData;
 
 	std::ifstream	ReadFile(input);
 	while (std::getline(ReadFile, oneLine))
 		fileContent = fileContent + oneLine + '\n';
 	ReadFile.close();
-	parseFile(fileContent);
+	parsedData = parseFile(fileContent);
+	//rest of the program
+	delete[] parsedData.tracks;
 }
 
 int	main(int argc, char **argv)
