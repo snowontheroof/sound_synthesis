@@ -80,7 +80,7 @@ void	parseFile(std::string content)
 				j++;
 			std::string tmp = content.substr(k, (j - k));
 			test.tempo = std::stoi(tmp);
-			std::cout << "tempo is " << test.tempo << std::endl;
+			// std::cout << "tempo is " << test.tempo << std::endl;
 		}
 		i++;
 	}
@@ -102,7 +102,7 @@ void	parseFile(std::string content)
 		}
 		i++;
 	}
-	std::cout << "track amt is " << test.track_amt << std::endl;
+	// std::cout << "track amt is " << test.track_amt << std::endl;
 	test.tracks = new Track[test.track_amt];
 	j = i + 7;
 	for (size_t l = 0; l < test.track_amt; l++)
@@ -112,14 +112,17 @@ void	parseFile(std::string content)
 			j++;
 		std::string	tmp = content.substr(k, (j - k));
 		test.tracks[l].instrument = find_type(tmp);
-		std::cout << test.tracks[l].instrument << std::endl;
+		test.tracks[l].track_dur = 0;
+		// std::cout << test.tracks[l].instrument << std::endl;
 		j++;
 	}
 	j++;
-	for (size_t m = 0; m < test.track_amt; m++)
+	while (content[j])
 	{
+		size_t a = j;
 		while (content[j] != ':')
 			j++;
+		size_t	track_idx = std::stoi(content.substr(a, (j - a))) - 1;
 		j += 2;
 		k = j;
 		while (content[j] != '\n')
@@ -127,47 +130,49 @@ void	parseFile(std::string content)
 		std::string	string = content.substr(k, (j - k));
 		std::istringstream iss(string);
 		std::string token;
-		std::vector<Notes> parsedNotes;
 		std::map<std::string, double>	freq = make_freq();
 
 		int	idx = 0;
-		test.tracks[m].track_dur = 0;
 		while (iss >> token)
 		{
+			if (token[0] == '|')
+				continue;
 			size_t	pos = token.find('/');
 			double	frequency;
 			double	duration;
 			if (pos != std::string::npos)
 			{
-				std::string note = fill_note(token.substr(0, pos), parsedNotes, idx);
+				std::string note = fill_note(token.substr(0, pos), test.tracks[track_idx].notes, idx);
 				frequency = find_freq(note, freq);
 				duration = std::stod(token.substr(pos + 1));
-				parsedNotes.push_back({note, duration, frequency});
+				test.tracks[track_idx].notes.push_back({note, duration, frequency});
 			}
 			else
 			{
-				std::string note = fill_note(token, parsedNotes, idx);
-				frequency = find_freq(token, freq);
+				std::string note = fill_note(token, test.tracks[track_idx].notes, idx);
+				frequency = find_freq(note, freq);
 				if (idx != 0)
-					duration = parsedNotes[idx - 1].duration;
+					duration = test.tracks[track_idx].notes[idx - 1].duration;
 				else
 					duration = 1.0;
-				parsedNotes.push_back({note, duration, frequency});
+				test.tracks[track_idx].notes.push_back({note, duration, frequency});
 			}
-			test.tracks[m].track_dur += duration;
+			test.tracks[track_idx].track_dur += duration;
 			idx++;
 		}
-		test.tracks[m].notes = parsedNotes;
+		while (content[j] != '\n')
+			j++;
 		j++;
 	}
-	for (size_t m = 0; m < test.track_amt; m++)
-	{
-		std::cout << "Track no " << m << ": instrument: " << test.tracks[m].instrument
-			<< ", dur: " << test.tracks[m].track_dur << ", notes: \n";
-		for (const auto& t : test.tracks[m].notes)
-			std::cout << "duration: " << t.duration << ", freq: " << t.frequency
-				<< ", pitch: " << t.pitch << std::endl;
-	}
+	// for (size_t m = 0; m < test.track_amt; m++)
+	// {
+		// std::cout << "Track no " << m << ": instrument: " << test.tracks[m].instrument
+			// << ", dur: " << test.tracks[m].track_dur << ", notes: \n";
+		// for (const auto& t : test.tracks[m].notes)
+			// std::cout << "duration: " << t.duration << ", freq: " << t.frequency
+				// << ", pitch: " << t.pitch << std::endl;
+	// }
+	delete[] test.tracks;
 }
 
 void	minisynth(std::string input)

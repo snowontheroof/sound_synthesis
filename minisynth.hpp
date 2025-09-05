@@ -18,16 +18,6 @@ struct Notes
 	double		frequency;
 };
 
-std::vector<Notes> parsedNotes;
-
-// struct Notes
-// {
-// 	char			pitch;
-// 	bool			alteration;
-// 	unsigned int	octave;
-// 	double			duration;
-// };
-
 struct Track
 {
 	Type				instrument;
@@ -37,7 +27,7 @@ struct Track
 
 struct Data
 {
-	int				tempo;
-	unsigned int	track_amt;
-	Track*			tracks;
+	int					tempo;
+	unsigned int		track_amt;
+	Track*				tracks;
 };
