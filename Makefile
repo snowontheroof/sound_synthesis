@@ -6,14 +6,14 @@
 #    By: sojala <sojala@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/05 11:54:28 by jvarila           #+#    #+#              #
-#    Updated: 2025/09/05 15:44:08 by sojala           ###   ########.fr        #
+#    Updated: 2025/09/05 16:55:31 by sojala           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= minisynth
 
 CXX			:= c++
-CXX_FLAGS	:= -std=c++20
+CXX_FLAGS	:= -Wall -Wextra -Werror -std=c++20
 DEBUG_FLAGS	:= -g
 # ---------------------------------------------------------------------------- #
 INC_DIR		:= ./inc

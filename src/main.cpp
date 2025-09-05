@@ -50,7 +50,7 @@ int	main( int argc, char **argv )
 
 	paTestData	data;
 
-	for (int i = 0; i < parsedData.tracks[0].notes.size(); i++)
+	for (size_t i = 0; i < parsedData.tracks[0].notes.size(); i++)
 	{
 		Notes	note = parsedData.tracks[0].notes[i];
 		enum Type	type = parsedData.tracks[0].instrument;

@@ -149,7 +149,7 @@ size_t	find_volume(std::string content, Data& data, size_t i)
 	return i;
 }
 
-void	find_notes(std::string content, std::string string, Data& data, size_t track_idx)
+void	find_notes(std::string string, Data& data, size_t track_idx)
 {
 	std::map<std::string, double>	freq = make_freq();
 	std::istringstream				iss(string);
@@ -219,7 +219,7 @@ Data	parseFile(std::string content)
 		while (content[i] != '\n')
 			i++;
 		std::string	string = content.substr(k, (i - k));
-		find_notes(content, string, data, track_idx);
+		find_notes(string, data, track_idx);
 		while (content[i] != '\n')
 			i++;
 		i++;
@@ -240,23 +240,10 @@ Data	parser(std::string input)
 {
 	std::string		oneLine;
 	std::string		fileContent;
-	Data			parsedData;
 
 	std::ifstream	ReadFile(input);
 	while (std::getline(ReadFile, oneLine))
 		fileContent = fileContent + oneLine + '\n';
 	ReadFile.close();
 	return parseFile(fileContent);
-	//rest of the program
-	// delete[] parsedData.tracks;
 }
-//
-// int	main(int argc, char **argv)
-// {
-// 	if (argc != 2)
-// 		std::cout << "Usage: ./minisynth <file>\n";
-// 	else
-// 		minisynth(static_cast<std::string>(argv[1]));
-
-// 	return 0;
-// }
