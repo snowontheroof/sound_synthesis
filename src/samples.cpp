@@ -1,7 +1,5 @@
 #include "minisynth.hpp"
 
-extern double	seconds_per_beat;
-
 std::vector<float>
 generate_sample(Notes note, double master_volume, enum Type type)
 {
@@ -21,10 +19,10 @@ generate_sample(Notes note, double master_volume, enum Type type)
 }
 
 std::vector<float>
-generate_sine_sample( uint16_t freq, double amplitude, double beats, double seconds_per_beat)
+generate_sine_sample( uint16_t freq, double amplitude, double beats )
 {
 	std::vector<float>	buffer{};
-	double const		sample_duration	= beats * seconds_per_beat;
+	double const		sample_duration	= beats * secondsPerBeat;
 	size_t const		total_samples	= sample_duration * SAMPLE_RATE;
 
 	for ( size_t i = 0; i < total_samples; ++i )
@@ -37,10 +35,10 @@ generate_sine_sample( uint16_t freq, double amplitude, double beats, double seco
 }
 
 std::vector<float>
-generate_saw_sample( uint16_t freq, double amplitude, double beats, double seconds_per_beat )
+generate_saw_sample( uint16_t freq, double amplitude, double beats )
 {
 	std::vector<float>	buffer{};
-	double const		sample_duration		= beats * seconds_per_beat;
+	double const		sample_duration		= beats * secondsPerBeat;
 	size_t const		total_samples		= sample_duration * SAMPLE_RATE;
 	double const		step				= freq * 2.0 / SAMPLE_RATE;
 	double				minus_one_to_one	= -1;
@@ -57,10 +55,10 @@ generate_saw_sample( uint16_t freq, double amplitude, double beats, double secon
 }
 
 std::vector<float>
-generate_square_sample( uint16_t freq, double amplitude, double beats, double seconds_per_beat )
+generate_square_sample( uint16_t freq, double amplitude, double beats )
 {
 	std::vector<float>	buffer{};
-	double const		sample_duration	= beats * seconds_per_beat;
+	double const		sample_duration	= beats * secondsPerBeat;
 	size_t const		total_samples	= sample_duration * SAMPLE_RATE;
 	double const		sample_width	= sample_duration / SAMPLE_RATE;
 	double const		peak_width		= 1 / ( 2.0 * freq );
@@ -78,10 +76,10 @@ generate_square_sample( uint16_t freq, double amplitude, double beats, double se
 }
 
 std::vector<float>
-generate_triangle_sample( uint16_t freq, double amplitude, double beats, double seconds_per_beat )
+generate_triangle_sample( uint16_t freq, double amplitude, double beats )
 {
 	std::vector<float>	buffer{};
-	double const			sample_duration		= beats * seconds_per_beat;
+	double const			sample_duration		= beats * secondsPerBeat;
 	size_t const			total_samples		= sample_duration * SAMPLE_RATE;
 	double const			step				= freq * 2.0 / SAMPLE_RATE;
 	double					minus_one_to_one	= 0;

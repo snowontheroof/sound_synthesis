@@ -9,7 +9,7 @@ static int patestCallback(	const void *inputBuffer, void *outputBuffer,
 static int	report_error_and_return_one( PaError err );
 
 int		bpm;
-double	seconds_per_beat;
+double	secondsPerBeat;
 
 int	main( int argc, char **argv )
 {
@@ -22,30 +22,27 @@ int	main( int argc, char **argv )
 	Data	parsedData = parser(argv[1]);
 
 	// Set globals
-	bpm					= parsedData.tempo;
-	seconds_per_beat	= 60.0 / bpm;
+	bpm				= parsedData.tempo;
+	secondsPerBeat	= 60.0 / bpm;
 
-	double	master_volume = 0.3;
+	std::vector<float> mix = sampleTracks( parsedData );
+	double	masterVolume = 0.3;
+
+	double	maxVal = 0.0;
+	for ( double sample : mix )
+		maxVal = std::max( maxVal, std::abs( sample ));
+	double	normFactor = ( maxVal > 1.0 ) ? ( 1.0 / maxVal) : 1.0;
 
 	paTestData	data;
-	for ( size_t i = 0; i < parsedData.tracks[0].notes.size(); ++i )
+	for ( auto sample : mix )
 	{
-		Notes		note = parsedData.tracks[0].notes[i];
-		enum Type	type = parsedData.tracks[0].instrument;
-
-		double	volume = 0;
-		if (note.frequency != -1)
-			volume = master_volume;
-
-		std::vector<float>	note_sample = generate_sample(note, volume, type);
-		for ( auto &s: note_sample )
-		{
-			data.right_phase.push_back(s);
-			data.left_phase.push_back(s);
-		}
+		sample *= normFactor;
+		sample *= masterVolume;
+		data.right_phase.push_back(sample);
+		data.left_phase.push_back(sample);
 	}
 
-	size_t	total_samples		= data.right_phase.size();
+	size_t	total_samples	= mix.size();
 
 	// Start PortAudio
 	PaError	err = Pa_Initialize();
@@ -67,9 +64,6 @@ int	main( int argc, char **argv )
 	err = Pa_StartStream( stream );
 	if ( err != paNoError )
 		return report_error_and_return_one( err );
-
-	double playback_duration = static_cast<double>( total_samples ) / SAMPLE_RATE;
-	Pa_Sleep( std::ceil( playback_duration ) * 1000 );
 
 	err = Pa_StopStream( stream );
 	if ( err != paNoError )

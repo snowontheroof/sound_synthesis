@@ -23,8 +23,10 @@ HEADERS		:= $(INC_DIR)/minisynth.hpp
 SRC_DIR	:=	./src
 OBJ_DIR	:=	./obj
 # ---------------------------------------------------------------------------- #
-SRC :=	$(SRC_DIR)/samples.cpp	\
-		$(SRC_DIR)/parsing.cpp	\
+SRC :=	$(SRC_DIR)/samples.cpp		\
+		$(SRC_DIR)/parsing.cpp		\
+		$(SRC_DIR)/trackToFile.cpp	\
+		$(SRC_DIR)/writeToWAV.cpp	\
 		$(SRC_DIR)/main.cpp
 # ---------------------------------------------------------------------------- #
 OBJ :=	$(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC))

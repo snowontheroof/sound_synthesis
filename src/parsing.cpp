@@ -20,7 +20,7 @@ Type	find_type(std::string instrument)
 
 std::map<std::string, double>	make_freq()
 {
-	std::ifstream	file("../hertz.txt");
+	std::ifstream	file("hertz.txt");
 	std::map<std::string, double>	freq;
 	std::string		buffer;
 
