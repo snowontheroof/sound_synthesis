@@ -44,17 +44,17 @@ double	find_freq(std::string note, std::map<std::string, double> freq)
 	return -1.0;
 }
 
-std::string	fill_note(std::string notestr, std::vector<Notes> note, size_t m)
+std::string	fill_note(std::string notestr, std::vector<Notes> note, size_t idx)
 {
 	int	notelength = notestr.length();
 	if (notelength == 3)
 		return notestr;
 	if (notelength == 1 || (notelength == 2 && (notestr[1] == '#' || notestr[1] == 'b')))
 	{
-			if (m != 0)
+			if (idx > 0)
 			{
-				int	length = note[m - 1].pitch.length();
-				notestr += note[m - 1].pitch[length - 1];
+				int	length = note[idx - 1].pitch.length();
+				notestr += note[idx - 1].pitch[length - 1];
 			}
 			else
 				notestr += "4";
@@ -72,7 +72,7 @@ void	parseFile(std::string content)
 	size_t	i = content.find('t');
 	while (content[i])
 	{
-		if (content.substr(i, 6) == "tempo " && content[i - 1] == '\n')
+		if (i > 0 && content.substr(i, 6) == "tempo " && content[i - 1] == '\n')
 		{
 			j = i + 6;
 			k = j;
@@ -105,7 +105,7 @@ void	parseFile(std::string content)
 	// std::cout << "track amt is " << test.track_amt << std::endl;
 	test.tracks = new Track[test.track_amt];
 	j = i + 7;
-	for (size_t l = 0; l < test.track_amt; l++)
+	for (size_t l = 0; l < test.track_amt && content[j]; l++)
 	{
 		k = j;
 		while (content[j] != ',' && content[j] != '\n')
@@ -154,7 +154,7 @@ void	parseFile(std::string content)
 			{
 				std::string note = fill_note(token, test.tracks[track_idx].notes, idx);
 				frequency = find_freq(note, freq);
-				if (idx != 0)
+				if (idx > 0)
 					duration = test.tracks[track_idx].notes[idx - 1].duration;
 				else
 					duration = 1.0;
