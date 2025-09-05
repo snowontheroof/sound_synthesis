@@ -3,6 +3,7 @@
 #include <cmath>
 #include <vector>
 #include <iostream>
+#include <cinttypes>
 #include "portaudio.h"
 
 constexpr uint16_t	SAMPLE_RATE	= 44100;

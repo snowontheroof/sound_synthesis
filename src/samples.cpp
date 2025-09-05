@@ -1,4 +1,5 @@
-#include "samples.hpp"
+#include "../inc/samples.hpp"
+#include "../inc/minisynth.hpp"
 
 extern double	seconds_per_beat;
 
@@ -46,7 +47,7 @@ generate_square_sample( uint16_t freq, double amplitude, double beats )
 	size_t const		total_samples	= sample_duration * SAMPLE_RATE;
 	double const		sample_width	= sample_duration / SAMPLE_RATE;
 	double const		peak_width		= 1 / ( 2.0 * freq );
-	
+
 	size_t	nth_peak;
 	for ( size_t i = 0; i < total_samples; ++i )
 	{
