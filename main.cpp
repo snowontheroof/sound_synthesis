@@ -189,6 +189,8 @@ void	minisynth(std::string input)
 		fileContent = fileContent + oneLine + '\n';
 	ReadFile.close();
 	parsedData = parseFile(fileContent);
+	std::vector<float> mix = sampleTracks(parsedData);
+	writeWAV(mix, parsedData);
 	//rest of the program
 	delete[] parsedData.tracks;
 }
