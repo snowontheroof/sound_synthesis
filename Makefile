@@ -17,7 +17,7 @@ CXX_FLAGS	:= -Wall -Wextra -Werror -std=c++20
 DEBUG_FLAGS	:= -g
 # ---------------------------------------------------------------------------- #
 INC_DIR		:= ./inc
-INC_FLAGS	:= -I. -I$(INC_DIR)
+INC_FLAGS	:= -I$(INC_DIR)
 HEADERS		:= $(INC_DIR)/samples.hpp
 # ---------------------------------------------------------------------------- #
 SRC_DIR	:=	./src
@@ -30,7 +30,8 @@ OBJ :=	$(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC))
 
 .SECONDARY: $(OBJ)
 # ---------------------------------------------------------------------------- #
-PORTAUDIO		:= libportaudio.a
+PORTAUDIO_DIR	:= ./lib
+PORTAUDIO		:= $(PORTAUDIO_DIR)/libportaudio.a
 PORTAUDIO_FLAGS	:= -lrt -lm -lasound -lpulse -lpulse-simple -pthread -lsndio
 # ---------------------------------------------------------------------------- #
 all: $(NAME)

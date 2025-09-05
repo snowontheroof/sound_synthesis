@@ -1,3 +1,4 @@
+#include <iostream>
 #include "samples.hpp"
 
 uint16_t	bpm					= 60;			// bpm is global out of convenience
