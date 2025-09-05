@@ -72,7 +72,7 @@ Data	parseFile(std::string content)
 	size_t	i = content.find('t');
 	while (content[i])
 	{
-		if (i > 0 && content.substr(i, 6) == "tempo " && content[i - 1] == '\n')
+		if (content.substr(i, 6) == "tempo " && (i == 0 || content[i - 1] == '\n'))
 		{
 			j = i + 6;
 			k = j;
