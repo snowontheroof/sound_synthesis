@@ -36,6 +36,7 @@ struct Data
 };
 
 std::vector<float> sampleTracks(Data data);
+
 void writeWAV(std::vector<float> buffer, Data data);
 
 std::vector<float>

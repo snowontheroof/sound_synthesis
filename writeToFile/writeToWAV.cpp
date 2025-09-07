@@ -18,7 +18,7 @@ using namespace little_endian_io;
 
 void writeWAV(std::vector<float> buffer, Data data)
 {
-  ofstream f( "minisynthToWAV.wav", ios::binary );
+  ofstream f( "minisynthToWAV_ADSR.wav", ios::binary );
 
   // Write the file headers
   f << "RIFF----WAVEfmt ";     // (chunk size to be filled in later)
@@ -46,15 +46,15 @@ void writeWAV(std::vector<float> buffer, Data data)
   double N = SAMPLE_RATE * songDuration;  // total number of samples
 
 
- float maxVal = 0.0f;
-    for (float s : buffer) {
-        maxVal = std::max(maxVal, std::fabs(s));
-    }
-    float normFactor = (maxVal > 1.0f) ? (1.0f / maxVal) : 1.0f;
+//  float maxVal = 0.0f;
+//     for (float s : buffer) {
+//         maxVal = std::max(maxVal, std::fabs(s));
+//     }
+//     float normFactor = (maxVal > 1.0f) ? (1.0f / maxVal) : 1.0f;
 
     // 🔹 Write samples
     for (float s : buffer) {
-        s *= normFactor;
+        // s *= normFactor;
         int16_t pcm = static_cast<int16_t>(s * max_amplitude);
         write_word(f, pcm, 2); // L
         write_word(f, pcm, 2); // R
