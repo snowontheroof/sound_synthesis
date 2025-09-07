@@ -35,7 +35,23 @@ OBJ :=	$(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC))
 # ---------------------------------------------------------------------------- #
 PORTAUDIO_DIR	:= ./lib
 PORTAUDIO		:= $(PORTAUDIO_DIR)/libportaudio.a
-PORTAUDIO_FLAGS	:= -lrt -lm -lasound -lpulse -lpulse-simple -pthread -lsndio
+
+# Detect the operating system ------------------------------------------------ #
+UNAME_S := $(shell uname -s)
+
+# macOS-specific settings ---------------------------------------------------- #
+ifeq ($(UNAME_S), Darwin)
+	PORTAUDIO_FLAGS := -L$(shell brew --prefix portaudio)/lib -lportaudio -framework CoreAudio -framework AudioToolbox -framework CoreServices
+	INC_FLAGS := -I$(shell brew --prefix portaudio)/include $(INC_FLAGS)
+	PORTAUDIO := # Do not use the Linux-specific libportaudio.a on macOS
+endif
+
+# Linux-specific settings ---------------------------------------------------- #
+ifeq ($(UNAME_S), Linux)
+	PORTAUDIO_FLAGS := -lrt -lm -lasound -lpulse -lpulse-simple -pthread -lsndio
+	PORTAUDIO := $(PORTAUDIO_DIR)/libportaudio.a
+endif
+
 # ---------------------------------------------------------------------------- #
 all: $(NAME)
 

@@ -26,7 +26,7 @@ int	main( int argc, char **argv )
 	secondsPerBeat	= 60.0 / bpm;
 
 	std::vector<float> mix = sampleTracks( parsedData );
-	double	masterVolume = 0.3;
+	double	masterVolume = 0.6;
 
 	double	maxVal = 0.0;
 	for ( double sample : mix )
@@ -42,7 +42,7 @@ int	main( int argc, char **argv )
 		data.left_phase.push_back(sample);
 	}
 
-	size_t	total_samples	= mix.size();
+	size_t	framesPerBuffer = 256; // Set a reasonable buffer size for real-time playback
 
 	// Start PortAudio
 	PaError	err = Pa_Initialize();
@@ -55,7 +55,7 @@ int	main( int argc, char **argv )
 								2,				// Stereo
 								paFloat32,		// Output buffer type
 								SAMPLE_RATE,
-								total_samples,	// How much information is in the buffer that keeps looping
+								framesPerBuffer, // Use a fixed buffer size
 								patestCallback,	// Callback function pointer
 								&data );		// Data passed to callback function
 	if ( err != paNoError )
@@ -64,6 +64,9 @@ int	main( int argc, char **argv )
 	err = Pa_StartStream( stream );
 	if ( err != paNoError )
 		return report_error_and_return_one( err );
+
+	while ( Pa_IsStreamActive( stream ) )
+		Pa_Sleep(100);
 
 	err = Pa_StopStream( stream );
 	if ( err != paNoError )
@@ -93,13 +96,24 @@ static int patestCallback(	const void *inputBuffer, void *outputBuffer,
 	(void)timeInfo;
 	(void)statusFlags;
 
-	unsigned int	i;
-	for ( i = 0; i < framesPerBuffer; ++i )
+	static size_t sampleIndex = 0;
+
+	for ( unsigned long i = 0; i < framesPerBuffer; ++i )
 	{
-		*out++ = data->left_phase[i];
-		*out++ = data->right_phase[i];
+		if (sampleIndex < data->left_phase.size())
+		{
+			*out++ = data->left_phase[sampleIndex];
+			*out++ = data->right_phase[sampleIndex];
+			sampleIndex++;
+		}
+		else
+		{
+			*out++ = 0.0f;
+			*out++ = 0.0f;
+		}
 	}
-	return 0;
+
+	return (sampleIndex >= data->left_phase.size()) ? paComplete : paContinue;
 }
 
 static int	report_error_and_return_one( PaError err )

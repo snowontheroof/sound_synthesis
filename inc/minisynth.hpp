@@ -75,6 +75,7 @@ generate_square_sample( uint16_t freq, double amplitude, double beats );
 std::vector<float>
 generate_triangle_sample( uint16_t freq, double amplitude, double beats );
 
+
 /* -------------------------------------------------------------------------- */
 
 Type	find_type( std::string instrument );
