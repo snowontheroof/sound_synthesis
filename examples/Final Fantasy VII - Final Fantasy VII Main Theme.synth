@@ -1,7 +1,7 @@
 # Track  2: channel  0 (Acoustic Grand), 9 voices
 
 tempo 120
-tracks sine,sine,sine,sine,sine,sine,sine
+tracks sine,sine,sine,sine,sine,sine,sine,sine,sine
 
 1: c3/0.5 g e4/1 g c5 e/0.03125 r/0.46875 e4/0.5 a e e5/2 c3/0.5 g c5/1 d e c/2 a#4/1.5 g#/0.5 c5/2 d4/1 c a3/0.5 e4 b e e5/2 c4/0.5 c3 c5/1 d e e f/2 f4/0.25 b d d5 d/1 d/2 f4/0.5 a3 g/2 g e4 g3/0.5 c4 f/0.25 g a b c7/2 d5/1 c b7/2 a c4/0.5 g c7/1 d e g#2/2 a# e6 d7/1 e a2/0.5 c3 e a a7/2 c5/0.5 c4 c6/1 d e7 g f/2 a6/0.25 b c7 d a6/1 d/2 d4/0.5 c7 c/2 g3/0.5 d4/1 g3/0.5 c c4/2 d6/0.5 e/0.25 f d/0.5 e/4 c3/0.5 g c4 d e/2 d/0.5 d6 a4 e6 d4/1 f d/0.5 f a d5 c/1 b4 c6/0.5 d g4 c5 d c e c b/1 e/0.5 c a/1 e/0.5 c g6 c4 g6 g4 c6/2 f3/0.5 c4 f g f/1 e/0.5 d3 g5/2 e4/0.5 d c g3 c g c4 d e d c g3 e6 a3 d4 e f7/2 d3/0.5 a d4 e f r e d6 a2 e3 e6/2 a4/0.5 b c5 b4 a e c b3 e6/0.25 g c4/0.5 a6/2 a5 f3/0.5 c4 f g a g b5 c4 g6 d3 f e6 f/2 f5/0.5 e d c b4 a g d c3/2 d4/1 e b/2 a r/1 c g5/0.25 a b c6 e4/1 g#6/0.25 d# c g#5 c d# g# c6 a# f d a#5 d4/1 e5/2 d3/1 c e6/2 a5 c3/0.5 d4 c6/1 d4 e e6 c/2 a4/0.5 g5/0.25 a d3/0.5 f a f d4 a c6/1 f3/0.5 a c4 f c6/2 g2/0.5 d3 g b d4 f d6 b5 g#3/1.5 g#4/0.5 d6/2 c/4 c/1 g#5/0.75 c6/0.25 a#3/1.5 a#2/0.5 e6/4 c5/0.25 d e g c6 d e g c d e g c7 d e g c8/4 
 
