@@ -82,27 +82,32 @@ std::vector<float> sampleTracks( Data data )
 			std::vector<float> noteSamples;
 			switch (track.instrument) {
 				case SINE:
-					noteSamples = generate_sine_sample( note.frequency, 0.5, note.duration );
+					noteSamples = generate_sine_sample(note.frequency, 0.5, note.duration);
 					break;
 				case SAW:
-					noteSamples = generate_saw_sample( note.frequency, 0.5, note.duration );
+					noteSamples = generate_saw_sample(note.frequency, 0.5, note.duration);
 					break;
 				case SQUARE:
-					noteSamples = generate_square_sample( note.frequency, 0.5, note.duration );
+					noteSamples = generate_square_sample(note.frequency, 0.5, note.duration);
 					break;
 				case TRIANGLE:
-					noteSamples = generate_triangle_sample( note.frequency, 0.5, note.duration );
+					noteSamples = generate_triangle_sample(note.frequency, 0.5, note.duration);
+					break;
+				case KICK:
+					noteSamples = generate_kick_sample(note.frequency, 0.9, 0.5);
 					break;
 				case INVALID:
 					break;
 			}
-			applyADSR(noteSamples, 0.01f, 0.2f, 0.6f, 0.2f);
+			if (track.instrument != KICK) {
+				applyADSR(noteSamples, 0.01f, 0.2f, 0.6f, 0.2f);
+			}
 			for (size_t i = 0; i < noteSamples.size(); ++i) {
 				if (sampleOffset + i < mixBuffer.size()) {
 					mixBuffer[sampleOffset + i] += noteSamples[i];
 				}
 				else
-				break;
+					break;
 			}
 			sampleOffset += noteSamplesCount;
 		}

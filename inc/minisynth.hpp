@@ -19,6 +19,7 @@ enum Type
 	SAW,
 	SQUARE,
 	TRIANGLE,
+	KICK,
 	INVALID
 };
 
@@ -75,6 +76,8 @@ generate_square_sample( uint16_t freq, double amplitude, double beats );
 std::vector<float>
 generate_triangle_sample( uint16_t freq, double amplitude, double beats );
 
+std::vector<float>
+generate_kick_sample( uint16_t freq, double amplitude, double duration);
 
 /* -------------------------------------------------------------------------- */
 

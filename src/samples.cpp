@@ -95,3 +95,20 @@ generate_triangle_sample( uint16_t freq, double amplitude, double beats )
 	}
 	return buffer;
 }
+
+std::vector<float>
+generate_kick_sample(uint16_t freq, double amplitude, double duration)
+{
+	std::vector<float> buffer;
+	size_t total_samples = duration * SAMPLE_RATE;
+	//double frequency = 80.0;
+
+	for (size_t i = 0; i < total_samples; ++i)
+	{
+		double t = static_cast<double>(i) / SAMPLE_RATE;
+		double env = std::exp(-t * 10.0);
+		double sample = amplitude * 5 * env * sin(2.0 * M_PI * freq * t);
+		buffer.push_back(static_cast<float>(sample));
+	}
+	return buffer;
+}

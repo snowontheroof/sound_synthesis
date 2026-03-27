@@ -15,6 +15,8 @@ Type	find_type(std::string instrument)
 		return SQUARE;
 	if (instrument == "triangle")
 		return TRIANGLE;
+	if (instrument == "kick")
+		return KICK;
 	return INVALID;
 }
 
@@ -102,7 +104,7 @@ Data	parseFile(std::string content)
 	}
 	test.tracks = new Track[test.track_amt];
 	j = i + 7;
-	for (size_t l = 0; l < test.track_amt && content[j]; l++)
+	for (size_t	l = 0; l < test.track_amt && content[j]; l++)
 	{
 		k = j;
 		while (content[j] != ',' && content[j] != '\n')
