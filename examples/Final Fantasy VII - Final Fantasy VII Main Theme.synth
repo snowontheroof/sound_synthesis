@@ -1,0 +1,23 @@
+# Track  2: channel  0 (Acoustic Grand), 9 voices
+
+tempo 120
+tracks sine,sine,sine,sine,sine,sine,sine,sine,sine
+
+1: c3/0.5 g e4/1 g c5 e/0.03125 r/0.46875 e4/0.5 a e e5/2 c3/0.5 g c5/1 d e c/2 a#4/1.5 g#/0.5 c5/2 d4/1 c a3/0.5 e4 b e e5/2 c4/0.5 c3 c5/1 d e e f/2 f4/0.25 b d d5 d/1 d/2 f4/0.5 a3 g/2 g e4 g3/0.5 c4 f/0.25 g a b c7/2 d5/1 c b7/2 a c4/0.5 g c7/1 d e g#2/2 a# e6 d7/1 e a2/0.5 c3 e a a7/2 c5/0.5 c4 c6/1 d e7 g f/2 a6/0.25 b c7 d a6/1 d/2 d4/0.5 c7 c/2 g3/0.5 d4/1 g3/0.5 c c4/2 d6/0.5 e/0.25 f d/0.5 e/4 c3/0.5 g c4 d e/2 d/0.5 d6 a4 e6 d4/1 f d/0.5 f a d5 c/1 b4 c6/0.5 d g4 c5 d c e c b/1 e/0.5 c a/1 e/0.5 c g6 c4 g6 g4 c6/2 f3/0.5 c4 f g f/1 e/0.5 d3 g5/2 e4/0.5 d c g3 c g c4 d e d c g3 e6 a3 d4 e f7/2 d3/0.5 a d4 e f r e d6 a2 e3 e6/2 a4/0.5 b c5 b4 a e c b3 e6/0.25 g c4/0.5 a6/2 a5 f3/0.5 c4 f g a g b5 c4 g6 d3 f e6 f/2 f5/0.5 e d c b4 a g d c3/2 d4/1 e b/2 a r/1 c g5/0.25 a b c6 e4/1 g#6/0.25 d# c g#5 c d# g# c6 a# f d a#5 d4/1 e5/2 d3/1 c e6/2 a5 c3/0.5 d4 c6/1 d4 e e6 c/2 a4/0.5 g5/0.25 a d3/0.5 f a f d4 a c6/1 f3/0.5 a c4 f c6/2 g2/0.5 d3 g b d4 f d6 b5 g#3/1.5 g#4/0.5 d6/2 c/4 c/1 g#5/0.75 c6/0.25 a#3/1.5 a#2/0.5 e6/4 c5/0.25 d e g c6 d e g c d e g c7 d e g c8/4 
+
+2: e4/1.5 c/0.5 d/1 e5 a3/0.5 r/1.5 c5/2 r/1 g4 c5 c4 g5 f f4 a# e5/2 d/1 e b/2 c r/1 e4 c5 c c a4/2 a/0.25 e c5 c4 a/1 f d/0.5 a3 r c5 c/2 b4 c r c6 d7/1 e e/2 a6 r/1 e f g g#3/2 c7/1 f6 c3/2 f6/1 c5 b7/2 c r/1 e6 d5 g6 a c7/2 r/1 e d/2 r/0.5 f4 g3 d6 f a b/2 c7/4 c3/0.5 g c4 d e/2 r/2.5 e6/0.5 f e e f4 d6 f4 f6/2 r/3 e/0.5 d c4 e e6/3 r/0.5 c5 r/1.5 c/0.5 r/1 f3/0.5 f6 f4 a6 a4 g f c r/2 c6/1 d e/2 r/4.5 e7/0.5 f e d3 d7 d e f4/1 d/0.5 a3 r/3 e7/0.5 d4 c7 d e/2 r/4 a3/0.5 a6/0.25 b c/2 a r/3 f4/0.5 a6 g2 d6 d g3 f5/2 r/4 c4/2 d3/1 e b/2 a r/1 c5/0.25 d e f d4/1 e3 g4 f c3 d g5/2 d4/1 c b6/2 a c4/0.5 r g5/1 d6 c g5 f6/2 e5/0.25 f c6 d a5/1 d/2 f4/0.5 d c6/2.5 f4/0.5 c c5 b/3 g4/0.5 b g#5/2 d g/4 g#/0.75 c6/1.25 d5/2 c6/4 
+
+3: r/0.125 g4/1.875 d5/1 g4 b5/2 a r/1 c4/0.5 g3 d4/1 c5 g#3/0.5 c4 g#/1 c5 d g4/2 g/1 c5 e/0.03125 r/1.96875 a/2 r/1 g4 f g g5 c/2 r/1 e a4/0.5 f/1.5 r d/0.5 a c5 r d4 g b c5/2 r e6 d/1 e c7/2 c5/0.5 b4 a/1 r c6 d5 e6 g7 f a#3/2 c4 d5/1 g6 c7/2 a6 r/1 g4/0.5 c5 d7/1 c5 c7 a6/2 r/1 f a/2 r/1.5 d4/1 g3/0.5 r d6 f b r c f a f r g3/1 c7/4 r/27 e3/0.5 d4 c3 g c4 d r/4.5 e6/0.5 f e e7 d6 d e f/2 r/3 e/0.5 d7 c6 d a3 b c4 e r/5 e6/2 r/1 f4/0.5 c r/3 b6/0.5 a5 g d d e d4 f g d r/4.5 c6/0.5 c7 c6 r c c7 c6 r c c7 c6 r c c7 c6 r/1 c3 d d6/0.25 e f g g3/1 f c4 f5/0.25 a# d6 f c/2 d/1 c c/2 e r/1 e5 c6 e g f5/2 a/0.25 b f4/0.5 f5/1 f/2 r/1.5 c/0.5 f a a4 a5 f a3 r g4 b d5 g b/1.5 d#/2 a# e/4 d#/0.5 g#/0.75 d# d6/1 f5 g/4 
+
+4: r/0.25 c5/1.75 c/1 r/0.75 c/0.28125 r/1.96875 c/0.5 b4 a/1 r e g g g#/1.5 c/0.5 a#3 f4/1.5 r/0.5 c e c c5/1 g4 r/2 a/1 e/0.5 d r/1 c/0.5 e g/1 e f3/0.5 c4 g c f c r/1 d/0.5 f a/2 r/5 g/2 r c5/0.5 c4 e g f6/1 g a3/0.5 e4 b e c7/2 r/1 c5/0.5 g4 d6/1 c5 g#6 c5/0.5 d#4 a#5/1 d7 g6/2 d/1 e e7/2 c4/0.5 e a b r/1 c7 f6 e f3/0.5 c4 f g/1 f/1.5 d3/0.5 a d4 e a f r/41 c6/2 r/22 f3/0.5 b6 b5 g4/1.5 r/29 c5/2 g/1 e6 a5/2 c/0.5 b4 a a2 r/1 c5 d g f3/0.25 c4 f a a5/2 r/1 d d6/2 r/9 c/2 f5 e6/4 c5/2 a#2/1.5 a#3/0.5 e5/3.75 g/0.25 
+
+5: r/15.75 g4/0.75 r/3.25 c5/0.28125 r/7.96875 a4/1 r/3 f/1 r/7.5 c3/0.5 g c4 r/14 c7/1 g#6 f d5/0.5 f4 e7/2 r/11 f6/2 r/1 d f/2 r/65 c7/0.5 b5 f4 a6 r/30 c3/0.5 g c4 e d5/1 e a3/0.5 e4 b e c6/2 r/1 e4/0.5 c e5/1 e c6 c4/0.25 f a c5 e/0.5 d r/1 e6 a5/2 r/9 g#4/1.5 g#3/0.5 a#/1.5 a#4/0.5 c3 g c4 d e/2 g#2/1.5 g#3/0.5 f5 a#/1 f6/0.5 c3/0.25 d e g c4 d e g c d e g c5 d e/0.5 
+
+6: r/56.5 d#4/0.5 c7/1 r/0.5 f4 d6/1 r/0.5 g4 e5 g4 r/82.5 c/0.5 b6 a5 r/32 c6/1 g5 r/3.5 a3/0.5 r/2 g5/1 r/17 c/2 a#4/1.5 a#3/0.5 r/4 g#/1.5 g#2/0.5 a#5/0.75 d6/1 
+
+7: r/205 g#5/1 r f r/4.25 d#/1.25 g#/0.5 r/0.25 f/1.25 a#/0.5 
+
+8: r/215 a#5/1 
+
+9: r/215 g6/0.5 f5 
+

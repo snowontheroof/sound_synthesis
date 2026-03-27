@@ -26,7 +26,7 @@ int	main( int argc, char **argv )
 	secondsPerBeat	= 60.0 / bpm;
 
 	std::vector<float> mix = sampleTracks( parsedData );
-	double	masterVolume = 0.6;
+	double	masterVolume = 0.9;
 
 	double	maxVal = 0.0;
 	for ( double sample : mix )
